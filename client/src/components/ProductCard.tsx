@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Rating } from '@mui/material'
 import { Product } from '@/types/Product'
@@ -10,8 +10,19 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
+	const [rating, setRating] = useState(product.rating)
+
+	const handleRatingChange = (
+		event: React.SyntheticEvent,
+		newValue: number | null,
+	) => {
+		if (newValue !== null) {
+			setRating(newValue)
+		}
+	}
+
 	return (
-		<div className='bg-white rounded-md relative drop-shadow-xl'>
+		<div className='bg-white rounded-md relative drop-shadow-xl w-[200px] transform transition-transform duration-200 hover:-translate-y-2'>
 			<div className='relative'>
 				<Image
 					src={product.imageURL}
@@ -33,7 +44,7 @@ function ProductCard({ product }: ProductCardProps) {
 
 				<div className='mb-4 mt-2'>
 					<p className='text-xs font-normal tracking-tight'>Ratings</p>
-					<Rating value={product.rating} size='small' />
+					<Rating value={rating} onChange={handleRatingChange} size='small' />
 				</div>
 				<div>
 					<AddToCartButton color={product.color} />
