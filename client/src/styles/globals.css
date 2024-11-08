@@ -22,7 +22,7 @@ body {
 
 @font-face {
   font-family: 'Inter';
-  src: url('../pages/fonts/Inter.ttf');
+  src: url('../../public/fonts/Inter.ttf');
 }
 
 
