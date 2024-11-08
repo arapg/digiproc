@@ -30,11 +30,12 @@ function ProductCard({ product }: ProductCardProps) {
 				>
 					{product.name}
 				</h3>
-				<p className='text-xs font-normal tracking-tight'>Ratings</p>
-				<div>
+
+				<div className='mb-4 mt-2'>
+					<p className='text-xs font-normal tracking-tight'>Ratings</p>
 					<Rating value={product.rating} size='small' />
 				</div>
-				<div className=''>
+				<div>
 					<AddToCartButton color={product.color} />
 				</div>
 			</div>
