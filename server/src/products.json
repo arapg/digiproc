@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "Savings & Cost avoidance",
         "rating": 4,
         "price": 90000,
@@ -7,6 +8,7 @@
         "color": "#DC840A"
     },
     {
+        "id": 2,
         "name": "Code of Conduct",
         "rating": 4,
         "price": 90000,
@@ -14,6 +16,7 @@
         "color": "#1A364C"
     },
     {
+        "id": 3,
         "name": "ESG measurement",
         "rating": 4,
         "price": 90000,
