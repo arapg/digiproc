@@ -7,7 +7,8 @@ interface AddToCartButtonProps {
 function AddToCartButton({ color }: AddToCartButtonProps) {
 	return (
 		<button
-			className={`font-inter font-bold bg-[${color}] text-white px-[51px] py-[11px] rounded-md cursor-pointer`}
+			className={`font-inter font-bold text-white px-[51px] py-[11px] rounded-md cursor-pointer`}
+			style={{ background: color }}
 		>
 			Add to cart
 		</button>
