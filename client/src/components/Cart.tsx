@@ -35,11 +35,7 @@ function Cart() {
 	return (
 		<div
 			className={`bg-white shadow-md p-3.5 rounded-xl cursor-pointer fixed bottom-7 right-8 transition-all duration-300
-            ${
-							isExpanded
-								? 'w-[300px] h-[400px] overflow-scroll'
-								: 'w-[68px] h-[68px]'
-						}`}
+            ${isExpanded ? 'w-[300px] h-[400px] ' : 'w-[68px] h-[68px]'}`}
 		>
 			<div onClick={handleToggleExpand} className='absolute top-3 left-3 flex '>
 				<svg
@@ -58,12 +54,15 @@ function Cart() {
 			</div>
 
 			{isExpanded && (
-				<>
-					<div className='mt-14 p-4'>{renderCartItems()}</div>{' '}
-					<div className='flex justify-center'>
-						<button className='underline'>Go to checkout</button>
-					</div>
-				</>
+				<div className='mt-14 p-4 max-h-[400px] overflow-scroll'>
+					{renderCartItems()}
+				</div>
+			)}
+
+			{isExpanded && cartItems.length > 0 && (
+				<div className='flex justify-center'>
+					<button className='underline'>Go to checkout</button>
+				</div>
 			)}
 		</div>
 	)
