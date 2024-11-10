@@ -5,6 +5,7 @@ import { Product } from '@/types/Product'
 import AddToCartButton from './AddToCartButton'
 import ProductPrice from './ProductPrice'
 import { useCart } from '@/context/CartContext'
+import { toast } from 'react-toastify'
 
 interface ProductCardProps {
 	product: Product
@@ -29,6 +30,9 @@ function ProductCard({ product }: ProductCardProps) {
 			name: product.name,
 			price: product.price,
 			quantity: 1,
+		})
+		toast.success('Item added to cart', {
+			position: 'bottom-center',
 		})
 	}
 
