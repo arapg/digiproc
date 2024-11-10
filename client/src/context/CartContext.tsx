@@ -47,7 +47,14 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 	}
 
 	const removeFromCart = (itemId: number) => {
-		setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId))
+		setCartItems((prevItems) =>
+			prevItems
+				.map((item) =>
+					item.id === itemId ? { ...item, quantity: item.quantity - 1 } : item,
+				)
+				// Filters out items that have a quantity less than 1
+				.filter((item) => item.quantity > 0),
+		)
 	}
 
 	const clearCart = () => setCartItems([])
