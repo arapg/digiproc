@@ -28,7 +28,22 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 	const [cartItems, setCartItems] = useState<CartItem[]>([])
 
 	const addToCart = (item: CartItem) => {
-		setCartItems((prevItems) => [...prevItems, item])
+		setCartItems((prevItems) => {
+			// Check if the item already exists in the cart
+			const existingItem = prevItems.find((cartItem) => cartItem.id === item.id)
+
+			if (existingItem) {
+				// If the item exists, increase its quantity
+				return prevItems.map((cartItem) =>
+					cartItem.id === item.id
+						? { ...cartItem, quantity: cartItem.quantity + 1 }
+						: cartItem,
+				)
+			} else {
+				// If the item doesn't exist, add it to the cart with quantity of 1
+				return [...prevItems, { ...item, quantity: 1 }]
+			}
+		})
 	}
 
 	const removeFromCart = (itemId: number) => {
