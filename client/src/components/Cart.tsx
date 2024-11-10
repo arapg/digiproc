@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useCart } from '@/context/CartContext'
 
 function Cart() {
-	const { cartItems } = useCart()
+	const { cartItems, removeFromCart } = useCart()
 	const [isExpanded, setIsExpanded] = useState(false)
 
 	const renderCartItems = () => {
@@ -17,6 +17,7 @@ function Cart() {
 						key={item.id}
 						className='flex items-center justify-between border-b pb-2'
 					>
+						<button onClick={() => removeFromCart(item.id)}>x</button>
 						<span className='max-w-[120px] truncate'>{item.name}</span>
 						<span>{item.quantity}x</span>
 						<span className='font-semibold'>
@@ -35,7 +36,7 @@ function Cart() {
 	return (
 		<div
 			className={`bg-white shadow-md p-3.5 rounded-xl cursor-pointer fixed bottom-7 right-8 transition-all duration-300
-            ${isExpanded ? 'w-[300px] h-[400px] ' : 'w-[68px] h-[68px]'}`}
+            ${isExpanded ? 'w-[320px] h-[400px] ' : 'w-[68px] h-[68px]'}`}
 		>
 			<div onClick={handleToggleExpand} className='absolute top-3 left-3 flex '>
 				<svg
